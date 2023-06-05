@@ -26,10 +26,12 @@ async def get_by_id(
 @router.post('/')
 async def create_meet(
     dto: CreateMeet, 
-    username: str = Depends(get_current_user),
+    # username: str = Depends(get_current_user),
+    user: str = Depends(get_current_user),
     service: MeetService = Depends(MeetService) 
   ):
-  return service.create_meet(dto)
+  print('username = ',  user, 'dto =', dto)
+  return service.create_meet(user, dto)
 
 @router.put('/{id}')
 async def update_meet(

@@ -31,3 +31,4 @@ class TokenHandler:
 def get_current_user(token: str = Depends(oauth2_scheme)):
     username = TokenHandler.read_token(token)
     return username
+

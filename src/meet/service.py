@@ -1,5 +1,6 @@
 from fastapi import Depends
 
+from src.auth.model import User
 from src.core.middlewares.error import ApiError
 from src.core.database import SessionLocal, get_db
 
@@ -10,10 +11,12 @@ class MeetService:
     def __init__(self, db: SessionLocal = Depends(get_db)):
         self.db = db
 
-    def create_meet(self, dto: CreateMeet):
+    def create_meet(self, username, dto: CreateMeet):
+        user = self.db.query(User).filter(User.username == username).first()
         meet = Meet(
             name=dto.name,
-            color=dto.color
+            color=dto.color,
+            user_id= user.id
         )
 
         self.db.add(meet)

@@ -5,6 +5,7 @@ from src.core.database import Base
 from src.auth.model import User
 from src.meet.model import Meet
 
+
 class Position(Base):
     __tablename__ = 'positions'
 

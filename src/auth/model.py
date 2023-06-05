@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from src.core.database import Base
 
 class User(Base):
@@ -9,4 +10,6 @@ class User(Base):
     avatar = Column(String(100), nullable=False)
     username = Column(String(100), nullable=False, index=True, unique=True)
     hashed_password = Column(String(100), nullable=False)
+
+    meets = relationship("Meet", back_populates="user")
 

@@ -9,3 +9,6 @@ class ToggleMute(BaseModel):
     user_id: str
     link: str
     muted: bool
+
+# class UpdatePositionOnlyOrientation(BaseModel):
+#     orientation: str 
